@@ -55,8 +55,6 @@ public final class Main {
     }
 
     public static void main(String[] args) {
-        net.burningtnt.hmclprs.hooks.PRCollectionBootstrap.onApplicationLaunch();
-
         System.getProperties().putIfAbsent("java.net.useSystemProxies", "true");
         System.getProperties().putIfAbsent("javafx.autoproxy.disable", "true");
         System.getProperties().putIfAbsent("http.agent", "HMCL/" + Metadata.VERSION);

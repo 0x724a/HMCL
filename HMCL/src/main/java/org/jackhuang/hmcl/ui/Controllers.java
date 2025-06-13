@@ -311,6 +311,7 @@ public final class Controllers {
             }
         }
 
+        net.burningtnt.hmclprs.hooks.PRCollectionRuntime.onApplicationLaunch();
         if (JavaRuntime.CURRENT_VERSION < 10) {
             Number shownTipVersion = null;
 

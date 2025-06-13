@@ -1,6 +1,7 @@
 package net.burningtnt.hmclprs.hooks;
 
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -11,6 +12,7 @@ import net.burningtnt.hmclprs.patch.Inject;
 import net.burningtnt.hmclprs.patch.Redirect;
 import net.burningtnt.hmclprs.patch.ValueMutation;
 import org.jackhuang.hmcl.game.DefaultGameRepository;
+import org.jackhuang.hmcl.setting.ConfigHolder;
 import org.jackhuang.hmcl.task.FileDownloadTask;
 import org.jackhuang.hmcl.ui.Controllers;
 import org.jackhuang.hmcl.ui.FXUtils;
@@ -32,6 +34,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class PRCollectionRuntime {
+    @Inject
+    public static void onApplicationLaunch() {
+        ObservableMap<String, Object> shownTips = ConfigHolder.config().getShownTips();
+        if (Constants.SHOULD_DISPLAY_LAUNCH_WARNING && shownTips.get("prs-warning") == null) {
+            Controllers.dialog(Constants.getWarningBody(), Constants.getWarningTitle());
+            shownTips.put("prs-warning", true);
+        }
+    }
+
     private PRCollectionRuntime() {
     }
 

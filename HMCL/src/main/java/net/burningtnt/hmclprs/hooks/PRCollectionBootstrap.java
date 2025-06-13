@@ -5,19 +5,8 @@ import net.burningtnt.hmclprs.patch.Inject;
 import net.burningtnt.hmclprs.patch.Redirect;
 import net.burningtnt.hmclprs.patch.ValueMutation;
 
-import javax.swing.*;
-
 public final class PRCollectionBootstrap {
     private PRCollectionBootstrap() {
-    }
-
-    @Inject
-    public static void onApplicationLaunch() {
-        if (Constants.SHOULD_DISPLAY_LAUNCH_WARNING && JOptionPane.showConfirmDialog(
-                null, Constants.getWarningBody(), Constants.getWarningTitle(), JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE
-        ) != JOptionPane.OK_OPTION) {
-            System.exit(1);
-        }
     }
 
     @ValueMutation
