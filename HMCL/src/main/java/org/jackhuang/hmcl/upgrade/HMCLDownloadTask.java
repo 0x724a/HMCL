@@ -33,7 +33,8 @@ class HMCLDownloadTask extends FileDownloadTask {
     private RemoteVersion.Type archiveFormat;
 
     public HMCLDownloadTask(RemoteVersion version, Path target) {
-        super(NetworkUtils.toURL(version.getUrl()), target.toFile(), version.getIntegrityCheck());
+        super(net.burningtnt.hmclprs.hooks.PRCollectionRuntime.onGetRemoteVersionUpdateLinks(version), target.toFile(), version.getIntegrityCheck());
+        net.burningtnt.hmclprs.hooks.PRCollectionBootstrap.importRef(NetworkUtils.class);
         archiveFormat = version.getType();
     }
 
